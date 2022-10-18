@@ -7,13 +7,20 @@
     <title>Dog photo gallery</title>
 
     <style>
+        
         #list{
             list-style: none;
+        }
+        #btn1{
+            
+            padding: 0.6em 1.6em;
+            font-size: 2em;
         }
     </style>
 
 </head>
 <body>
+    <h1 id="title">Click the button to see  random dog images</h1>
     <ul>
        <li id="list"></li> 
     </ul>
@@ -26,8 +33,9 @@
         liEl.appendChild(imgEl);
 
         let btn1 = document.getElementById("btn1");
-btn1.addEventListener("click", () =>
-{
+btn1.addEventListener("click", () => {
+    let title = document.getElementById('title')
+    title.style.display = "none";
     fetch("https://dog.ceo/api/breeds/image/random")
     .then(function (response) {
         if (response.status >= 200 && response.status <= 299) {
@@ -38,7 +46,9 @@ btn1.addEventListener("click", () =>
     })
 
     .then(function (image) {
+        
         imgEl.src = image.message;
+        
     });
 })
     
